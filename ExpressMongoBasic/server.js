@@ -30,16 +30,10 @@ app.use(logger('dev')); //debugs logs in terminal
 app.use(bodyParser.json()); //parses json and sets to body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'front'))); //sets all static file calls to folder
-
+app.use(express.static(path.join(__dirname, 'public'))) //sets all static file calls to 
 
 //---------------API-------------------//
 app.use('/api', api);
-
-
-app.get('/', function(req, res, next) {
-  res.render('index');
-});
 
 app.get('/color/:color', function(req, res, next) {
     

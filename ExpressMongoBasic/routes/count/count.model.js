@@ -10,7 +10,7 @@
     // myRandomValue : {}
     var CountSchema = new Schema({
         count: Number
-    });
+    }, {"collection": "count"});
 
 module.exports = mongoose.model('Count', CountSchema);
 

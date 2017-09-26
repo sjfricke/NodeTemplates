@@ -22,11 +22,14 @@ MongoDB.once('open', function() {
 
 
 //-------------------------Express JS configs-----------------------------//
-//view engine setup
+// view engine setup
+// call req.render(FileName) below to run
 app.set('views', './views'); //says where in root directory the find files (./views)
 app.set('view engine', 'ejs'); //says which engine being used (ejs)
 
 app.use(logger('dev')); //debugs logs in terminal
+// IMPORTANT: If you don't use bodyParser then you will NOT be able to call req.body.value
+// without parsing JSON yourself
 app.use(bodyParser.json()); //parses json and sets to body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -35,10 +38,13 @@ app.use(express.static(path.join(__dirname, 'public'))) //sets all static file c
 //---------------API-------------------//
 app.use('/api', api);
 
+// Loads page and set background color by color passed in URL
+// Example: http://mySite:9000/color/red creates a red page
 app.get('/color/:color', function(req, res, next) {
     
     var backgroundColor = req.params.color || "white"; //defaults if no param is passed
     
+    // pass in a json file to render page with
     res.render('color', {
         message: "Server is up and running",
         color: backgroundColor        
@@ -48,10 +54,12 @@ app.get('/color/:color', function(req, res, next) {
 
 // ------------ Server Setup --------------//
 
-
 /**
  * Get port from environment and store in Express.
  */
+
+// Change Port here
+// process.env.PORT used with services like Azure or AWS who give port
 var port = normalizePort(process.env.PORT || '9000');
 app.set('port', port);
 

@@ -1,12 +1,12 @@
 (function() {
     'use strict';
 
-    var Count = require('./count.model');
-
+    var Count = require('./count.model.js');
 
 //Basic CRUD
     
-    //grab all for display
+    // READ
+    // "get" - will grab all for display
     module.exports.get = function(req, res) { 
         Count.find({_id: req.params.id}, function (err, post) {
             if (err) {
@@ -17,7 +17,8 @@
         });
     };
 
-    //edit exsisting one
+    // UPDATE
+    // "update" - will edit exsisting one
      module.exports.update = function(req, res) {
         var id = req.params.id;
         var newCount = req.params.count;
@@ -32,7 +33,8 @@
         });
      };
     
-    //create a new post
+    // CREATE
+    // "start" - will create a new post
     module.exports.start = function(req, res) {
         var count = new Count({count: 0});
         count.save(function(err, post) {
@@ -44,8 +46,11 @@
         });
      };
     
-     //delete a post
+     // DELETE
+     // "delete" - removes a post
+     // WARNING: No undo so delete at own cost
      module.exports.delete = function(req, res) {
+        // SHOULD have authenticaton token so no one can just randomly call the delete URL
          var id = req.params.id;
          Count.findOneAndRemove({_id: id}, function(err, removedPost) {
           if (err) {
@@ -54,9 +59,6 @@
           }
           res.json(removedPost);
         });
-     };
-  
-
-    
+     };    
     
 })();

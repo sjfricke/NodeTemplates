@@ -8,12 +8,14 @@
     // Google "Mongoose Schema datatypes" for more help
     // Also if you want an value to be whatever just use
     // myRandomValue : {}
-    var CountSchema = new Schema(
+    var BookSchema = new Schema(
     {
-        count: Number
+        title: String,
+        author: String,
+        rating: Number
     },
-    { collection: 'count' });
+    { collection: 'book' });
 
-module.exports = mongoose.model('Count', CountSchema);
+module.exports = mongoose.model('Book', BookSchema);
 
 })();

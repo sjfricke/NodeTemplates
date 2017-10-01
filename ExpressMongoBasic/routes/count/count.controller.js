@@ -17,6 +17,19 @@
         });
     };
 
+    // CREATE
+    // "start" - will create a new post
+    module.exports.start = function(req, res) {
+        var count = new Count({count: 0});
+        count.save(function(err, post) {
+          if (err) {
+                console.error(err);
+                return res.status(500).send(err);
+          }
+          res.json(post);
+        });
+     };
+
     // UPDATE
     // "update" - will edit exsisting one
      module.exports.update = function(req, res) {
@@ -29,19 +42,6 @@
                 console.error(err);
                 return res.status(500).send(err);
           }  
-          res.json(post);
-        });
-     };
-    
-    // CREATE
-    // "start" - will create a new post
-    module.exports.start = function(req, res) {
-        var count = new Count({count: 0});
-        count.save(function(err, post) {
-          if (err) {
-                console.error(err);
-                return res.status(500).send(err);
-          }
           res.json(post);
         });
      };

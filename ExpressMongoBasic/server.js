@@ -11,7 +11,7 @@ var server = require('http').createServer(app); //creates an HTTP server instanc
 
 var api = require('./routes/api'); //gets api logic from path
 
-//add for Mongo support
+// add for Mongo support
 var mongoose = require('mongoose');                         
 var mongoURI = "mongodb://127.0.0.1:27017/DataBaseNameHere";
 var MongoDB = mongoose.connect(mongoURI).connection;

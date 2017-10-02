@@ -8,7 +8,7 @@
     // READ
     // "get" - will grab all for display
     module.exports.get = function(req, res) { 
-        Count.find({_id: req.params.id}, function (err, post) {
+        Count.find({"_id" : req.params.id}, function (err, post) {
             if (err) {
                 console.error(err);
                 return res.status(500).send(err);
@@ -37,7 +37,7 @@
         var newCount = req.params.count;
         // Need to do this so mongo doesn't think we're trying to edit the _id
   
-        Count.update({_id: id}, { $set: { count: newCount }}, function(err, post) {
+        Count.update({"_id" : id}, { $set: {"count" : newCount}}, function(err, post) {
           if (err) {
                 console.error(err);
                 return res.status(500).send(err);
@@ -52,7 +52,7 @@
      module.exports.delete = function(req, res) {
         // SHOULD have authenticaton token so no one can just randomly call the delete URL
          var id = req.params.id;
-         Count.findOneAndRemove({_id: id}, function(err, removedPost) {
+         Count.findOneAndRemove({"_id" : id}, function(err, removedPost) {
           if (err) {
             console.error(err);
             return res.status(500).send(err);

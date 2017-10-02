@@ -11,8 +11,7 @@
     var CountSchema = new Schema(
     {
         count: Number
-    },
-    { collection: 'count' });
+    }, {"collection": "count"});
 
 module.exports = mongoose.model('Count', CountSchema);
 

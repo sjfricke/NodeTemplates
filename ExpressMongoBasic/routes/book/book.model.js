@@ -13,8 +13,7 @@
         title: String,
         author: String,
         rating: Number
-    },
-    { collection: 'book' });
+    }, { "collection": "book" });
 
 module.exports = mongoose.model('Book', BookSchema);
 

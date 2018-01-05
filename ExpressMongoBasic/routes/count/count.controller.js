@@ -13,7 +13,7 @@
                 console.error(err);
                 return res.status(500).send(err);
             }
-            res.json(post);
+            return res.json(post);
         });
     };
 
@@ -26,7 +26,7 @@
                 console.error(err);
                 return res.status(500).send(err);
           }
-          res.json(post);
+          return res.json(post);
         });
      };
 
@@ -42,7 +42,7 @@
                 console.error(err);
                 return res.status(500).send(err);
           }  
-          res.json(post);
+          return res.json(post);
         });
      };
     
@@ -57,7 +57,7 @@
             console.error(err);
             return res.status(500).send(err);
           }
-          res.json(removedPost);
+          return res.json(removedPost);
         });
      };    
     

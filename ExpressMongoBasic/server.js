@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser'); //Parse Cookie header and populate 
 var bodyParser = require('body-parser'); //allows the use of req.body in POST request
 var server = require('http').createServer(app); //creates an HTTP server instance
 
-var api = require('./routes/api'); //gets api logic from path
+var api = require('./routes/api.js'); //gets api logic from path
 
 // add for Mongo support
 var mongoose = require('mongoose');                         

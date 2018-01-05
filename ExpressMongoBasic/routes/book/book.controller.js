@@ -13,7 +13,7 @@
                 console.error(err);
                 return res.status(500).send(err);
             }
-            res.json(post);
+            return res.json(post);
         });
     };
 
@@ -24,7 +24,7 @@
         // Check and make sure they supplied all parts of body
         // Note that since rating is a number that if you check for false a value of zero returns true
         if ( !req.body.title || !req.body.author || typeof(req.body.rating) != 'number') {
-          req.status(400).send("Need a valid title, author, and rating in post body");
+          return res.status(400).send("Need a valid title, author, and rating in post body");
         }
 
         var book = new Book({
@@ -38,7 +38,7 @@
                 console.error(err);
                 return res.status(500).send(err);
           }
-          res.json(post);
+          return res.json(post);
         });
      };
 
@@ -47,9 +47,9 @@
      module.exports.updateRating = function(req, res) {
 
         if (!req.body.id) {
-          res.status(400).send("Need to add an id in body");
+          return res.status(400).send("Need to add an id in body");
         } else if ( typeof(req.body.rating) != 'number') {
-          res.status(400).send("Need to add rating");
+          return res.status(400).send("Need to add rating");
         }
 
         Book.update({_id: req.body.id}, { $set: { rating: req.body.rating }}, function(err, post) {
@@ -57,7 +57,7 @@
                 console.error(err);
                 return res.status(500).send(err);
           }  
-          res.json(post);
+          return res.json(post);
         });
      };    
     
@@ -72,7 +72,7 @@
             console.error(err);
             return res.status(500).send(err);
           }
-          res.json(removedPost);
+          return res.json(removedPost);
         });
      };    
     

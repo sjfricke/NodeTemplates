@@ -2,9 +2,12 @@
 
 Templates to get up and going with NodeJS
 
-## [ExpressJS and MongoDB Basic Server](./ExpressMongoBasic)
-* This is a template with a simple usecase of using a MongoDB API with Mongoose
-* Also shows how to use ejs and a use case for a express.js view engine
+## [MongoDB Basic Server](./MongoBasic)
+* Template for a simple basic backend API using NodeJS, ExpressJS, and MongoDB
+
+## [ExpressJS view frontend and MongoDB Basic Server](./ExpressMongoBasic)
+* Template to have a frontend using ExpressJS template engine ejs
+	* Also includes a basic NodeJS backend
 
 ## Questions?
 
